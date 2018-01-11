@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+[ -e /tmp/$1 ] && { echo "/tmp/$1 already exists" >&2 ; exit 1; }
+
+mkfifo /tmp/$1 /tmp/$1-out
+trap "rm /tmp/$1 /tmp/$1-out" EXIT 
+
+
+( stdbuf -oL $* </tmp/$1 >>/tmp/$1-out 2>&1 ) &
+
+exec 3>>/tmp/$1 #keep the FIFO open as long as the script lives
+cat /tmp/$1-out

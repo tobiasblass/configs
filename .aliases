@@ -1,0 +1,8 @@
+alias ls='/bin/ls -F -1 $*'
+alias x=' /usr/bin/startx'
+alias u='sudo pacman -Syu'
+alias de='setxkbmap de; xmodmap $HOME/.Xmodmap'
+alias gb='setxkbmap gb; xmodmap $HOME/.Xmodmap'
+alias us='setxkbmap us -variant altgr-intl; xmodmap $HOME/.Xmodmap'
+alias startup='muttall & Telegram & firefox & sleep 5; ff < favs ; rssmail; exit '
+alias lastcore='ls -t /core/$USER/ | sed 1q'
